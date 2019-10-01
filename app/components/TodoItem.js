@@ -8,15 +8,19 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-const TodoItem = ({ text }) => (
+const TodoItem = ({ text, iscomplete, changeComplete, deleteItem }) => (
   <View style={styles.todoContainer}>
     <View style={styles.makerow}>
-      <TouchableOpacity>
-        <AntDesign name="checkcircle" size={20} style={styles.checkbtn} />
+      <TouchableOpacity onPress={changeComplete}>
+        <AntDesign
+          name={iscomplete ? "checkcircle" : "downcircleo"}
+          size={20}
+          style={styles.checkbtn}
+        />
       </TouchableOpacity>
       <Text style={styles.todoitem}>{text}</Text>
     </View>
-    <TouchableOpacity>
+    <TouchableOpacity onPress={deleteItem}>
       <AntDesign name="close" size={20} />
     </TouchableOpacity>
   </View>
